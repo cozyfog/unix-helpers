@@ -5,12 +5,14 @@
 
 #include <array>
 #include <string>
+#include <map>
 #include <vector>
 #include <stdint.h>
 #include <stdbool.h>
 
 using std::array;
 using std::string;
+using std::map;
 using std::vector;
 
 extern "C" {
