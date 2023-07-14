@@ -1,7 +1,7 @@
 /* date = July 5th 2023 8:31 am */
 
-#ifndef TYPEDEF_H
-#define TYPEDEF_H
+#ifndef TYPEDEF_HPP
+#define TYPEDEF_HPP
 
 #include <array>
 #include <string>
@@ -49,4 +49,4 @@ struct Vec3 {
 	f32 z;
 };
 
-#endif //TYPEDEF_H
+#endif //TYPEDEF_HPP
