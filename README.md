@@ -1,2 +1,2 @@
 # Daniel
-C/C++ Healper Sinle Header Libraries
+C/C++ Helper Single Header Libraries
