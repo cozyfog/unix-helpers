@@ -3,24 +3,46 @@
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
 
-#include <stdint.h>
-#include <stdbool.h>
+typedef char			I8;
+typedef short			I16;
+typedef int				I32;
+typedef long			I64;
 
-typedef int8_t         i8;
-typedef int16_t        i16;
-typedef int32_t        i32;
-typedef int64_t        i64;
+typedef unsigned char	U8;
+typedef unsigned short	U16;
+typedef unsigned int	U32;
+typedef unsigned long	U64;
 
-typedef uint8_t        u8;
-typedef uint16_t       u16;
-typedef uint32_t       u32;
-typedef uint64_t       u64;
+typedef float			F32;
+typedef double			F64;
 
-typedef float          f32;
-typedef double         f64;
+typedef I8				B8;
+typedef I16				B16;
+typedef I32				B32;
+typedef I64				B64;
 
-#define function         static
-#define local_persist    static
-#define global           static
+#undef  NULL
+#define NULL			(void*)0x00000000
+
+#define true			1
+#define false			0
+#define __bool_true_false_are_defined true
+
+#define EXIT_SUCCESS	0
+#define EXIT_FAILURE	1
+
+#ifdef _WIN32
+#define DLL_EXPORT		__declspec(dllexport)
+#define DLL_IMPORT		__declspec(dllimport)
+#endif
+
+#define GLOBAL			static
+#define INTERNAL		static
+#define LOCAL_PERSIST	static
+
+#define STRUCT(name)			typedef struct name name; struct name
+#define ENUM(name)				typedef enum name name; enum name
+#define TUPLE(name, t0, t1)		typedef struct name { t0 a; t1 b; } name;
+
 
 #endif //TYPEDEF_H
