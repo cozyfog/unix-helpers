@@ -1,0 +1,35 @@
+#!/bin/python3
+
+import os, sys
+
+PATTERN_SPLIT = '//'
+
+def rename_files(files: list, pattern: str) -> None:
+    p_final = pattern.split(PATTERN_SPLIT)
+
+    for n,f in enumerate(files):
+        new_name = ''
+
+        for p_curr in p_final:
+            for i in p_curr:
+                if p_curr == 'i':
+                    new_name += str(n + 1)
+                elif p_curr == 'I':
+                    new_name += str(n)
+                elif p_curr[0] == '$':
+                    new_name += os.environ[p_curr[1:]]
+                elif p_curr == '_':
+                    new_name += f
+                else:
+                    new_name += i
+
+        files[n] = new_name
+        os.system(f'\\mv {f} {new_name}')
+
+if __name__ == '__main__':
+    argc = len(sys.argv)
+
+    if argc < 2:
+        print(f'Usage: bulkmv <pattern>\nPatterns are <the name you want>{PATTERN_SPLIT}<regex>{PATTERN_SPLIT}...\n\t- {PATTERN_SPLIT}_{PATTERN_SPLIT}\t current file name.\n\t- {PATTERN_SPLIT}i{PATTERN_SPLIT}\t current file index (starting with 1).\n\t- {PATTERN_SPLIT}I{PATTERN_SPLIT}\t current file index (starting with 0).\n\t- {PATTERN_SPLIT}$...{PATTERN_SPLIT}\t environment variables.')
+    elif argc == 2:
+        rename_files(os.listdir(), sys.argv[1])

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+IMAGE_DIR=${XDG_CONFIG_HOME}wallpapers/img/
+WALLPAPER_CMD="xwallpaper --stretch"
+
+${WALLPAPER_CMD} $(find $IMAGE_DIR -type f | shuf -n 1)

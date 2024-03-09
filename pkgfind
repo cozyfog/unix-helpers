@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Required programs:
+# - dmenu
+# - xargs
+
+PACKAGE_INSTALL='xbps-install'
+PACKAGE_SEARCH='xbps-query -Rs'
+
+# exit if there is no argument given
+[ -z $1 ] && exit
+
+sudo ${PACKAGE_INSTALL} $(${PACKAGE_SEARCH} $1| dmenu | awk '{print $2}')
